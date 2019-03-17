@@ -56,6 +56,7 @@ namespace WebApplication1.Controllers
                 return BadRequest(ModelState);
             }
 
+            duckbill.Id = Guid.NewGuid();
             duckbills.Add(duckbill);
 
             return Ok();
