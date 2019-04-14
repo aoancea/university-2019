@@ -14,7 +14,7 @@ export class DuckbillsService {
     }
 
     loadDuckbill(duckbillID: string) {
-        return this.http.get<Duckbill>(this.baseUrl + 'api/Duckbills/DetailDuckbill?duckbillID=' + duckbillID);
+        return this.http.get<Duckbill>(this.baseUrl + `api/Duckbills/DetailDuckbill?duckbillID=${duckbillID}`);
     }
 
     saveDuckbill(duckbill: Duckbill) {

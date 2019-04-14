@@ -44,8 +44,8 @@ namespace WebApplication1.Controllers
             }
         }
 
-        [HttpDelete("{duckbillID}")]
-        public void DeleteDuckbill(Guid duckbillID)
+        [HttpDelete("{duckbillID?}")]
+        public void DeleteDuckbill([FromQuery]Guid duckbillID)
         {
             Duckbill dbDuckbill = duckbills.FirstOrDefault(db => db.Id == duckbillID);
 
