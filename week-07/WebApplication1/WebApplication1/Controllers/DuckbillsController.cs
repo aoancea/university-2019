@@ -7,7 +7,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class DuckbillsController : Controller
     {
         private static List<Duckbill> duckbills = new List<Duckbill>()
@@ -16,21 +16,24 @@ namespace WebApplication1.Controllers
             new Duckbill() { Id = Guid.NewGuid(), Name = "Stanley" },
         };
 
-        [HttpGet("[action]")]
+        [HttpGet]
         public IEnumerable<Duckbill> GetDuckbills()
         {
             return duckbills.ToArray();
         }
 
-        [HttpGet("[action]/{duckbillID?}")]
-        public Duckbill GetDuckbill(Guid? duckbillID)
+        [HttpGet("{duckbillID?}")]
+        public Duckbill GetDuckbill([FromQuery]Guid? duckbillID)
         {
             return duckbills.FirstOrDefault(duckbill => duckbill.Id == duckbillID);
         }
 
-        [HttpPost("[action]")]
+        [HttpPost]
         public void SaveDuckbill([FromBody]Duckbill duckbill)
         {
+            if (duckbill.Id == Guid.Empty)
+                duckbill.Id = Guid.NewGuid();
+
             duckbills.Add(duckbill);
         }
     }
