@@ -10,18 +10,18 @@ export class DuckbillsService {
         private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
     listDuckbills() {
-        return this.http.get<Duckbill[]>(this.baseUrl + 'api/Duckbills/GetDuckbills');
+        return this.http.get<Duckbill[]>(this.baseUrl + 'api/Duckbills/ListDuckbills');
     }
 
     loadDuckbill(duckbillID: string) {
-        return this.http.get<Duckbill>(this.baseUrl + 'api/Duckbills/GetDuckbill?duckbillID=' + duckbillID);
+        return this.http.get<Duckbill>(this.baseUrl + 'api/Duckbills/DetailDuckbill?duckbillID=' + duckbillID);
     }
 
     saveDuckbill(duckbill: Duckbill) {
         return this.http.post<any>(this.baseUrl + `api/Duckbills/SaveDuckbill`, duckbill);
     }
 
-    //deletePeriodicElement(periodicElementID: string) {
-    //    //return this.http.delete<any>(`${this.applicationService.baseUrl}PeriodicElement/DeletePeriodicElement?periodicElementID=${periodicElementID}`);
-    //}
+    deleteDuckbill(duckbillID: string) {
+        return this.http.delete<any>(this.baseUrl + `api/Duckbills/DeleteDuckbill?duckbillID=${duckbillID}`);
+    }
 }
