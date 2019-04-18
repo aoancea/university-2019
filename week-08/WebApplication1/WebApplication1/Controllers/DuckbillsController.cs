@@ -15,10 +15,17 @@ namespace WebApplication1.Controllers
             new Duckbill() { Id = Guid.NewGuid(), Name = "Stanley" },
         };
 
+        private readonly Data.WebApplication1Context webApplication1Context;
+
+        public DuckbillsController(Data.WebApplication1Context webApplication1Context)
+        {
+            this.webApplication1Context = webApplication1Context;
+        }
+
         [HttpGet]
         public IEnumerable<Duckbill> ListDuckbills()
         {
-            return duckbills.ToArray();
+            return webApplication1Context.Duckbills.ToArray();
         }
 
         [HttpGet("{duckbillID?}")]
@@ -33,15 +40,17 @@ namespace WebApplication1.Controllers
             if (duckbill.Id == Guid.Empty)
             {
                 duckbill.Id = Guid.NewGuid();
-
-                duckbills.Add(duckbill);
+                webApplication1Context.Duckbills.Add(duckbill);
             }
             else
             {
-                Duckbill dbDuckbill = duckbills.FirstOrDefault(db => db.Id == duckbill.Id);
+                Duckbill dbDuckbill = webApplication1Context.Duckbills.FirstOrDefault(x => x.Id == duckbill.Id);
+
                 dbDuckbill.Name = duckbill.Name;
                 dbDuckbill.Email = duckbill.Email;
             }
+
+            webApplication1Context.SaveChanges();
         }
 
         [HttpDelete("{duckbillID?}")]
