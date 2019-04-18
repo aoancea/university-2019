@@ -2,10 +2,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using WebApplication1.Models;
 
 namespace WebApplication1
 {
@@ -29,7 +28,7 @@ namespace WebApplication1
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddDbContext<WebApplication1Context>(options =>
+            services.AddDbContext<Data.WebApplication1Context>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("WebApplication1Context")));
         }
 

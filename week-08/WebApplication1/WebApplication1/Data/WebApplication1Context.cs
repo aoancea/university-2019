@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace WebApplication1.Models
+namespace WebApplication1.Data
 {
     public class WebApplication1Context : DbContext
     {
-        public WebApplication1Context (DbContextOptions<WebApplication1Context> options)
+        public DbSet<Models.Value> Value { get; set; }
+
+        public DbSet<Models.Duckbill> Duckbills { get; set; }
+
+        public WebApplication1Context(DbContextOptions<WebApplication1Context> options)
             : base(options)
         {
         }
-
-        public DbSet<WebApplication1.Models.Value> Value { get; set; }
     }
 }
