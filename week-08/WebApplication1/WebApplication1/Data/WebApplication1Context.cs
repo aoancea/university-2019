@@ -14,5 +14,7 @@ namespace WebApplication1.Models
         }
 
         public DbSet<Value> Values { get; set; }
+
+        public DbSet<Duckbill> Duckbills { get; set; }
     }
 }
