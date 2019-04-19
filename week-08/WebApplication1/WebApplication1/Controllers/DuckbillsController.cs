@@ -15,9 +15,9 @@ namespace WebApplication1.Controllers
             new Duckbill() { Id = Guid.NewGuid(), Name = "Stanley" },
         };
 
-        private readonly WebApplication1Context webApplication1Context;
+        private readonly Data.WebApplication1Context webApplication1Context;
 
-        public DuckbillsController(WebApplication1Context webApplication1Context)
+        public DuckbillsController(Data.WebApplication1Context webApplication1Context)
         {
             this.webApplication1Context = webApplication1Context;
         }

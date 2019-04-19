@@ -29,7 +29,7 @@ namespace WebApplication1
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddDbContext<WebApplication1Context>(options =>
+            services.AddDbContext<Data.WebApplication1Context>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("WebApplication1Context")));
         }
 

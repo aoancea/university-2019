@@ -13,9 +13,9 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly WebApplication1Context _context;
+        private readonly Data.WebApplication1Context _context;
 
-        public ValuesController(WebApplication1Context context)
+        public ValuesController(Data.WebApplication1Context context)
         {
             _context = context;
         }

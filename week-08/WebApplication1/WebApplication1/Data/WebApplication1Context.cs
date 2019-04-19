@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebApplication1.Models
+namespace WebApplication1.Data
 {
     public class WebApplication1Context : DbContext
     {
@@ -13,8 +13,8 @@ namespace WebApplication1.Models
         {
         }
 
-        public DbSet<Value> Values { get; set; }
+        public DbSet<Models.Value> Values { get; set; }
 
-        public DbSet<Duckbill> Duckbills { get; set; }
+        public DbSet<Models.Duckbill> Duckbills { get; set; }
     }
 }
