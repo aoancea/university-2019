@@ -23,9 +23,37 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Duckbill> ListDuckbills()
+        public IEnumerable<ViewModels.DuckbillViewModel> ListDuckbills()
         {
-            return webApplication1Context.Duckbills.ToArray();
+            Duckbill[] dbDuckbills = webApplication1Context.Duckbills.ToArray();
+
+            List<ViewModels.DuckbillViewModel> duckbills = new List<ViewModels.DuckbillViewModel>();
+
+            foreach (Duckbill dbDuckbill in dbDuckbills)
+            {
+                ViewModels.DuckbillViewModel duckbill = new ViewModels.DuckbillViewModel();
+                duckbill.Id = dbDuckbill.Id;
+                duckbill.Name = dbDuckbill.Name;
+                duckbill.Email = dbDuckbill.Email;
+
+                DuckbillFriend[] dbDuckbillFriends = webApplication1Context.DuckbillFriends
+                    .Where(dbDuckbillFriend =>
+                        dbDuckbillFriend.FriendId1 == dbDuckbill.Id ||
+                        dbDuckbillFriend.FriendId2 == dbDuckbill.Id)
+                    .ToArray();
+
+                Guid[] friendIds = dbDuckbillFriends
+                    .SelectMany(x => new[] { x.FriendId1, x.FriendId2 })
+                    .Distinct()
+                    .Where(x => x != dbDuckbill.Id)
+                    .ToArray();
+
+                duckbill.Friends = dbDuckbills.Where(x => friendIds.Contains(x.Id)).ToArray();
+
+                duckbills.Add(duckbill);
+            }
+
+            return duckbills;
         }
 
         [HttpGet("{duckbillID?}")]

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication1.Data
 {
     public class WebApplication1Context : DbContext
     {
-        public WebApplication1Context (DbContextOptions<WebApplication1Context> options)
+        public WebApplication1Context(DbContextOptions<WebApplication1Context> options)
             : base(options)
         {
         }
@@ -16,5 +12,7 @@ namespace WebApplication1.Data
         public DbSet<Models.Value> Values { get; set; }
 
         public DbSet<Models.Duckbill> Duckbills { get; set; }
+
+        public DbSet<Models.DuckbillFriend> DuckbillFriends { get; set; }
     }
 }
