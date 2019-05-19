@@ -26,6 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\core\core.module.ts" />
+    <None Remove="ClientApp\src\app\core\services\http-request-interceptor.ts" />
     <None Remove="ClientApp\src\app\duckbills\duckbills-routing.module.ts" />
     <None Remove="ClientApp\src\app\duckbills\duckbills.models.ts" />
     <None Remove="ClientApp\src\app\duckbills\duckbills.module.ts" />
@@ -35,6 +37,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\core\core.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\core\services\http-request-interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\duckbills\duckbills-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\duckbills\duckbills.models.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\duckbills\duckbills.module.ts" />

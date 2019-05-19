@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './shared/angular-material.module';
+import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -30,6 +31,7 @@ import { LoginComponent } from './login/login.component';
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         HttpClientModule,
         FormsModule,
+        CoreModule,
         AngularMaterialModule,
         RouterModule.forRoot([
             { path: '', component: HomeComponent, pathMatch: 'full' },
