@@ -31,6 +31,7 @@
     <None Remove="ClientApp\src\app\duckbills\duckbills.module.ts" />
     <None Remove="ClientApp\src\app\duckbills\duckbills.service.ts" />
     <None Remove="ClientApp\src\app\shared\angular-material.module.ts" />
+    <None Remove="ClientApp\src\app\shared\security.models.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +40,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\duckbills\duckbills.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\duckbills\duckbills.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\angular-material.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\security.models.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
